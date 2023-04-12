@@ -6,7 +6,7 @@
 #    By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/06 15:36:13 by vmustone          #+#    #+#              #
-#    Updated: 2023/04/11 16:46:00 by vmustone         ###   ########.fr        #
+#    Updated: 2023/04/12 12:15:58 by vmustone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,5 +37,8 @@ fclean: clean
 	rm -f $(LIBFT)
 	
 re: fclean all
+
+%.o: %.c
+	cc $(WWW) -c -o $@ $^
 
 .phony: all clean fclean re

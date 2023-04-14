@@ -6,7 +6,7 @@
 /*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:03:12 by vmustone          #+#    #+#             */
-/*   Updated: 2023/04/12 13:35:50 by vmustone         ###   ########.fr       */
+/*   Updated: 2023/04/14 15:51:44 by vmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ static void	rotate(t_stack *stack)
 	int	i;
 
 	i = 0;
-	tmp = stack->pointer[0];
+	tmp = stack->ptr[0];
 	while (i < stack->size)
 	{
-		stack->pointer[i] = stack->pointer[i + 1];
+		stack->ptr[i] = stack->ptr[i + 1];
 		i++;
 	}
-	stack->pointer[i - 1] = tmp;
+	stack->ptr[i - 1] = tmp;
 }
 
 void	ra(t_stack *stack_a)

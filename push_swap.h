@@ -6,7 +6,7 @@
 /*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 15:41:13 by vmustone          #+#    #+#             */
-/*   Updated: 2023/04/12 11:23:11 by vmustone         ###   ########.fr       */
+/*   Updated: 2023/04/14 17:36:36 by vmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 typedef struct s_stack
 {
-	int *pointer;
+	int *ptr;
 	int	size;
 }				t_stack;
 
@@ -31,4 +31,7 @@ void	rr(t_stack *stack_a, t_stack *stack_b);
 void	rra(t_stack *stack_a);
 void	rrb(t_stack *stack_b);
 void	rrr(t_stack *stack_a, t_stack *stack_b);
+void	algorithm_three_numbers(t_stack *stack_a);
+void	algorithm_five_numbers(t_stack *stack_a, t_stack *stack_b);
+void    print_stack(t_stack *stack);
 #endif

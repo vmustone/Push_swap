@@ -6,7 +6,7 @@
 /*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:01:04 by vmustone          #+#    #+#             */
-/*   Updated: 2023/04/12 13:35:20 by vmustone         ###   ########.fr       */
+/*   Updated: 2023/04/14 15:51:32 by vmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static void	swap(t_stack *stack)
 
     if (stack->size < 2)
         return ;
-    tmp = stack->pointer[0];
-    stack->pointer[0] = stack->pointer[1];
-    stack->pointer[1] = tmp;
+    tmp = stack->ptr[0];
+    stack->ptr[0] = stack->ptr[1];
+    stack->ptr[1] = tmp;
 }
 
 void	sa(t_stack *stack_a)

@@ -6,7 +6,7 @@
 /*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:03:12 by vmustone          #+#    #+#             */
-/*   Updated: 2023/04/14 15:51:44 by vmustone         ###   ########.fr       */
+/*   Updated: 2023/05/03 20:34:19 by vmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,13 @@ void	ra(t_stack *stack_a)
 	rotate(stack_a);
 	ft_printf("ra\n");
 }
+
 void	rb(t_stack *stack_b)
 {
 	rotate(stack_b);
 	ft_printf("rb\n");
 }
+
 void	rr(t_stack *stack_a, t_stack *stack_b)
 {
 	rotate(stack_a);

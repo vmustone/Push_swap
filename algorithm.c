@@ -12,99 +12,6 @@
 
 #include "push_swap.h"
 
-static int	smallest_index(t_stack *stack_a)
-{
-	int	i;
-	int	smallest;
-	int smallest_index;
-
-	i = 0;
-	smallest = stack_a->ptr[0];
-	while (i < stack_a->size)
-	{
-		if (stack_a->ptr[i] <= smallest)
-		{
-			smallest = stack_a->ptr[i];
-			smallest_index = i;
-		}
-		i++;
-	}
-	return (smallest_index);
-}
-
-static int	smallest_number(t_stack *stack_a)
-{
-	int	i;
-	int	smallest;
-
-	i = 0;
-	smallest = stack_a->ptr[0];
-	while (i < stack_a->size)
-	{
-		if (stack_a->ptr[i] <= smallest)
-			smallest = stack_a->ptr[i];
-		i++;
-	}
-	return (smallest);
-}
-
-static int	biggest_number(t_stack *stack_a)
-{
-	int	i;
-	int max;
-
-	i = 0;
-	max = stack_a->ptr[0];
-	while (i < stack_a->size)
-	{
-		if (stack_a->ptr[i] >= max)
-			max = stack_a->ptr[i];
-		i++;
-	}
-	return (max);
-}
-
-int	is_sorted(t_stack *stack_a)
-{
-	int	i;
-
-	i = 0;
-	while (i < stack_a->size)
-	{
-		if (stack_a->ptr[i] < stack_a->ptr[i + 1])
-			i++;
-		else
-			return (0);
-	}
-	return (1);
-}
-/*
-static int	bubble_sort(t_stack *stack_a)
-{
-	int	i;
-	int	j;
-	int	tmp;
-
-	i = 0;
-	while (i < stack_a->size - 1)
-	{
-		j = 0;
-		 while (j < stack_a->size - i - 1)
-		 {
-			if (stack_a->ptr[j] > stack_a->ptr[j + 1])
-			{
-				tmp = stack_a->ptr[j];
-				stack_a->ptr[j] = stack_a->ptr[j + 1];
-				stack_a->ptr[j + 1] = tmp;
-			}
-			j++;
-		 }
-		 i++;
-	}
-	return (*stack_a->ptr);
-}
-*/
-
 void	sort_three(t_stack *stack_a)
 {
 	if (stack_a->ptr[0] > stack_a->ptr[1] && stack_a->ptr[0] > stack_a->ptr[2])
@@ -143,39 +50,57 @@ void	sort_small_stack(t_stack *stack_a, t_stack *stack_b)
 		pa(stack_a, stack_b);
 }
 
-void	chunks(t_stack *stack_a, t_stack *stack_b)
+void	chunks(t_stack *stack_a, t_stack *stack_b, int chunk_count)
 {
-	int min;
-	int max;
+	long long int	min;
+	long long int	max;
+	int				current_c;
+	long long int	size_c;
+	int				i;
 
 	min = smallest_number(stack_a);
 	max = biggest_number(stack_a);
-	ft_printf("%d%d\n", min, max);
+	current_c = 1;
+	size_c = (max - min) / chunk_count;
+	while (current_c <= chunk_count)
+	{
+		i = 0;
+		while (i <= stack_a->size)
+		{
+			if (stack_a->ptr[0] <= (long long int)(min + size_c * current_c))
+				pb(stack_a, stack_b);
+			else
+				ra(stack_a);
+			i++;
+		}
+		current_c++;
+	}
+	while (stack_a->size)
+		pb(stack_a, stack_b);
 }
 
-void	sort_algo(t_stack *stack_a, t_stack *stack_b)
+void	sort_big_stack(t_stack *stack_a, t_stack *stack_b, int chunk_count)
 {
-	int pos;
+	int	pos;
 
 	pos = 0;
-	while (stack_a->size != 0)
+	chunks(stack_a, stack_b, chunk_count);
+	while (stack_b->size != 0)
 	{
-		pos = smallest_index(stack_a);
-		while (pos > 0 && pos < stack_a->size)
+		pos = biggest_index(stack_b);
+		while (pos > 0 && pos < stack_b->size)
 		{
-			if (pos > stack_a->size / 2)
+			if (pos > stack_b->size / 2)
 			{
-				rra(stack_a);
+				rrb(stack_b);
 				pos++;
 			}
-			if (pos <= stack_a->size / 2)
+			if (pos <= stack_b->size / 2)
 			{	
-				ra(stack_a);
+				rb(stack_b);
 				pos--;
 			}
 		}
-		pb(stack_a, stack_b);
-	}
-	while (stack_b->size != 0)
 		pa(stack_a, stack_b);
+	}
 }

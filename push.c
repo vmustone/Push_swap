@@ -1,49 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/11 16:02:10 by vmustone          #+#    #+#             */
-/*   Updated: 2023/04/18 15:26:33 by vmustone         ###   ########.fr       */
+/*   Created: 2023/05/03 20:40:22 by vmustone          #+#    #+#             */
+/*   Updated: 2023/05/03 20:43:24 by vmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void    push(t_stack *stack_a, t_stack *stack_b)
+static void	push(t_stack *stack_a, t_stack *stack_b)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if (stack_a->size == 0)
-        return ;
-    i = stack_b->size;
-    stack_b->size++;
-    while (i)
-    {
-        stack_b->ptr[i] = stack_b->ptr[i - 1];
-        i--;
-    }
-    stack_b->ptr[0] = stack_a->ptr[0];
-    stack_a->size--;
-    i = 0;
-    while (i < stack_a->size)
-    {
-        stack_a->ptr[i] = stack_a->ptr[i + 1];
-        i++;
-    }
+	i = 0;
+	if (stack_a->size == 0)
+		return ;
+	i = stack_b->size;
+	stack_b->size++;
+	while (i)
+	{
+		stack_b->ptr[i] = stack_b->ptr[i - 1];
+		i--;
+	}
+	stack_b->ptr[0] = stack_a->ptr[0];
+	stack_a->size--;
+	i = 0;
+	while (i < stack_a->size)
+	{
+		stack_a->ptr[i] = stack_a->ptr[i + 1];
+		i++;
+	}
 }
 
-void    pa(t_stack *stack_a, t_stack *stack_b)
+void	pa(t_stack *stack_a, t_stack *stack_b)
 {
-    push(stack_b, stack_a);
-    ft_printf("pa\n");
+	push(stack_b, stack_a);
+	ft_printf("pa\n");
 }
 
-void    pb(t_stack *stack_a, t_stack *stack_b)
+void	pb(t_stack *stack_a, t_stack *stack_b)
 {
-    push(stack_a, stack_b);
-    ft_printf("pb\n");
+	push(stack_a, stack_b);
+	ft_printf("pb\n");
 }

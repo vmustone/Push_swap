@@ -6,7 +6,7 @@
 #    By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/06 15:36:13 by vmustone          #+#    #+#              #
-#    Updated: 2023/05/04 21:49:08 by vmustone         ###   ########.fr        #
+#    Updated: 2023/05/10 13:40:18 by vmustone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,9 @@ NAME = push_swap
 
 LIBFT = libft/libft.a
 
-SRC = main.c push.c reverse_rotate.c rotate.c swap.c algorithm.c valid_input.c algorithm_utils.c
+SRC = main.c push.c reverse_rotate.c rotate.c\
+	swap.c algorithm.c valid_input.c\
+	algorithm_utils.c errors_and_free.c
 
 FLAGS = -Wall -Werror -Wextra
 
@@ -26,7 +28,7 @@ $(LIBFT):
 	Make -C libft
 
 $(NAME): $(LIBFT) $(OBJECTS)
-	cc $(FLAGS) $(OBJECTS) $(LIBFT) -o $(NAME) -fsanitize=address
+	cc $(FLAGS) $(OBJECTS) $(LIBFT) -o $(NAME)
 
 clean:
 	rm -f $(OBJECTS)

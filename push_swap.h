@@ -6,7 +6,7 @@
 /*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 15:41:13 by vmustone          #+#    #+#             */
-/*   Updated: 2023/05/03 20:37:48 by vmustone         ###   ########.fr       */
+/*   Updated: 2023/05/10 13:42:05 by vmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ void	rrb(t_stack *stack_b);
 void	rrr(t_stack *stack_a, t_stack *stack_b);
 void	sort_small_stack(t_stack *stack_a, t_stack *stack_b);
 void	sort_big_stack(t_stack *stack_a, t_stack *stack_b, int chunk_count);
-void    print_stack(t_stack *stack);
-void	chunks(t_stack *stack_a, t_stack *stack_b, int chunk_count);
 int		is_sorted(t_stack *stack_a);
 int		valid_input(char **argv);
 int		biggest_index(t_stack *stack_b);
 int		biggest_number(t_stack *stack_a);
 int		smallest_number(t_stack *stack_a);
 int		smallest_index(t_stack *stack_a);
+void	free_stacks(t_stack *stack_a, t_stack *stack_b);
+void	errors(char **argv);
 #endif

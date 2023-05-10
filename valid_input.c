@@ -6,7 +6,7 @@
 /*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 18:21:12 by vmustone          #+#    #+#             */
-/*   Updated: 2023/05/04 18:49:15 by vmustone         ###   ########.fr       */
+/*   Updated: 2023/05/09 19:29:34 by vmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,19 @@ static int	zeros(char *argv)
 	return (1);
 }
 
+int	min_max(char *argv)
+{
+	long long int	num;
+
+	num = ft_atoll(argv);
+	if (num < -2147483648 || num > 2147483647)
+	{
+		write(2, "Error\n", 6);
+		exit (1);
+	}
+	return (1);
+}
+
 int	valid_input(char **argv)
 {
 	int	i;
@@ -73,12 +86,14 @@ int	valid_input(char **argv)
 	nbr_zeros = 0;
 	if (ft_strncmp(argv[i], "./push_swap", 1) == 0)
 	i++;
-	while (argv[i] != '\0')
+	while (argv[i] != NULL)
 	{
 		if (!is_number(argv[i]))
 			return (0);
 		if (zeros(argv[i]))
 			nbr_zeros++;
+		if (min_max(argv[i]) == 0)
+			return (0);
 		i++;
 	}
 	if (!duplicate(argv))

@@ -6,7 +6,7 @@
 /*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 15:41:13 by vmustone          #+#    #+#             */
-/*   Updated: 2023/05/10 13:42:05 by vmustone         ###   ########.fr       */
+/*   Updated: 2023/05/10 16:42:37 by vmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ int		biggest_index(t_stack *stack_b);
 int		biggest_number(t_stack *stack_a);
 int		smallest_number(t_stack *stack_a);
 int		smallest_index(t_stack *stack_a);
-void	free_stacks(t_stack *stack_a, t_stack *stack_b);
+void	free_stacks(t_stack *stack_a, t_stack *stack_b, char **argv);
 void	errors(char **argv);
 #endif

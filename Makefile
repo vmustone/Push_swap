@@ -6,7 +6,7 @@
 #    By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/06 15:36:13 by vmustone          #+#    #+#              #
-#    Updated: 2023/05/10 13:40:18 by vmustone         ###   ########.fr        #
+#    Updated: 2023/05/10 17:55:35 by vmustone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ FLAGS = -Wall -Werror -Wextra
 
 OBJECTS = $(SRC:%.c=%.o)
 
-all: $(NAME) $(LIBFT) $(OBJECTS)
+all: $(NAME)
 
 $(LIBFT):
 	Make -C libft
@@ -41,6 +41,6 @@ fclean: clean
 re: fclean all
 
 %.o: %.c
-	cc $(WWW) -c -o $@ $^
+	cc $(FLAGS) -c -o $@ $^
 
 .phony: all clean fclean re

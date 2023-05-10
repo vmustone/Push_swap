@@ -6,7 +6,7 @@
 /*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 18:21:12 by vmustone          #+#    #+#             */
-/*   Updated: 2023/05/09 19:29:34 by vmustone         ###   ########.fr       */
+/*   Updated: 2023/05/10 17:49:11 by vmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ static int	duplicate(char **argv)
 	int	j;
 
 	i = 0;
-	if (ft_strncmp(argv[i], "./push_swap", 1) == 0 || argv[i] == 0)
+	if (((argv[1] != '\0') && ft_strncmp(argv[i], "./push_swap", 1) == 0)
+		|| argv[i] == 0)
 		i++;
 	while (argv[i] != '\0')
 	{
@@ -70,10 +71,7 @@ int	min_max(char *argv)
 
 	num = ft_atoll(argv);
 	if (num < -2147483648 || num > 2147483647)
-	{
-		write(2, "Error\n", 6);
-		exit (1);
-	}
+		return (0);
 	return (1);
 }
 
@@ -84,8 +82,8 @@ int	valid_input(char **argv)
 
 	i = 0;
 	nbr_zeros = 0;
-	if (ft_strncmp(argv[i], "./push_swap", 1) == 0)
-	i++;
+	if ((argv[1] != '\0') && ft_strncmp(argv[i], "./push_swap", 1) == 0)
+		i++;
 	while (argv[i] != NULL)
 	{
 		if (!is_number(argv[i]))

@@ -6,7 +6,7 @@
 /*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 15:35:59 by vmustone          #+#    #+#             */
-/*   Updated: 2023/05/10 14:12:57 by vmustone         ###   ########.fr       */
+/*   Updated: 2023/05/10 17:52:00 by vmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init_string(t_stack *stack_a, t_stack *stack_b, char **argv)
 	stack_b->size = 0;
 	stack_b->ptr = ft_calloc(stack_a->size, sizeof(int));
 	if (stack_a->ptr == NULL)
-		return ;
+		errors(NULL);
 	while (i < stack_a->size)
 	{
 		stack_a->ptr[i] = ft_atoi(argv[i]);
@@ -41,7 +41,7 @@ void	init_stack(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
 	stack_b->size = 0;
 	stack_b->ptr = ft_calloc(stack_a->size, sizeof(int));
 	if (stack_a->ptr == NULL)
-		return ;
+		errors(NULL);
 	while (i < stack_a->size)
 	{
 		stack_a->ptr[i] = ft_atoi(argv[i + 1]);
@@ -67,23 +67,27 @@ int	main(int argc, char **argv)
 {
 	t_stack	stack_a;
 	t_stack	stack_b;
+	char	**str;
 
+	str = NULL;
 	if (argc < 2)
 		return (0);
 	if (argc == 2 && ft_strrchr(argv[1], ' ') != 0)
 	{
-		argv = ft_split(argv[1], ' ');
-		if (valid_input(argv) == 0)
-			errors(argv);
-		init_string(&stack_a, &stack_b, argv);
+		str = ft_split(argv[1], ' ');
+		if (str == NULL)
+			errors(NULL);
+		if (valid_input(str) == 0)
+			errors(str);
+		init_string(&stack_a, &stack_b, str);
 	}
 	else
 	{
 		if (valid_input(argv) == 0)
-			errors(argv);
+			errors(NULL);
 		init_stack(&stack_a, &stack_b, argc, argv);
 	}
 	choose_sorting(&stack_a, &stack_b);
-	free_stacks(&stack_a, &stack_b);
+	free_stacks(&stack_a, &stack_b, str);
 	return (0);
 }

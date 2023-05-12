@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atoll.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 16:16:31 by vmustone          #+#    #+#             */
-/*   Updated: 2023/05/09 18:58:42 by vmustone         ###   ########.fr       */
+/*   Created: 2023/05/09 18:58:59 by vmustone          #+#    #+#             */
+/*   Updated: 2023/05/11 21:36:25 by vmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str)
+long long int	ft_atoll(const char *str)
 {
-	int			sign;
-	long int	res;
+	int				sign;
+	long long int	res;
 
 	sign = 1;
 	res = 0;
@@ -26,13 +26,9 @@ int	ft_atoi(const char *str)
 	while (*str >= '0' && *str <= '9')
 	{
 		res = res * 10 + *str - '0';
-		if (res < 0)
-		{
-			if (sign == 1)
-				return (-1);
-			return (0);
-		}
 		str++;
+		if (res < 0)
+			return (2147483648);
 	}
 	return (res * sign);
 }

@@ -6,7 +6,7 @@
 /*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 15:35:59 by vmustone          #+#    #+#             */
-/*   Updated: 2023/05/10 17:52:00 by vmustone         ###   ########.fr       */
+/*   Updated: 2023/05/11 21:30:08 by vmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	init_string(t_stack *stack_a, t_stack *stack_b, char **argv)
 	i = 0;
 	while (argv[stack_a->size])
 		stack_a->size++;
-	stack_a->ptr = ft_calloc((stack_a->size), sizeof(int));
+	stack_a->ptr = ft_calloc(stack_a->size + 1, sizeof(int));
 	stack_b->size = 0;
-	stack_b->ptr = ft_calloc(stack_a->size, sizeof(int));
+	stack_b->ptr = ft_calloc(stack_a->size + 1, sizeof(int));
 	if (stack_a->ptr == NULL)
 		errors(NULL);
 	while (i < stack_a->size)
@@ -37,9 +37,9 @@ void	init_stack(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
 
 	i = 0;
 	stack_a->size = argc - 1;
-	stack_a->ptr = ft_calloc(stack_a->size, sizeof(int));
+	stack_a->ptr = ft_calloc(stack_a->size + 1, sizeof(int));
 	stack_b->size = 0;
-	stack_b->ptr = ft_calloc(stack_a->size, sizeof(int));
+	stack_b->ptr = ft_calloc(stack_a->size + 1, sizeof(int));
 	if (stack_a->ptr == NULL)
 		errors(NULL);
 	while (i < stack_a->size)
@@ -77,17 +77,17 @@ int	main(int argc, char **argv)
 		str = ft_split(argv[1], ' ');
 		if (str == NULL)
 			errors(NULL);
-		if (valid_input(str) == 0)
+		if (valid_input(str) == 1)
 			errors(str);
 		init_string(&stack_a, &stack_b, str);
 	}
 	else
 	{
-		if (valid_input(argv) == 0)
+		if (valid_input(argv) == 1)
 			errors(NULL);
 		init_stack(&stack_a, &stack_b, argc, argv);
 	}
 	choose_sorting(&stack_a, &stack_b);
-	free_stacks(&stack_a, &stack_b, str);
+	free_stacks(&stack_a, &stack_b, argc, str);
 	return (0);
 }

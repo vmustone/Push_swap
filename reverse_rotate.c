@@ -6,7 +6,7 @@
 /*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:17:06 by vmustone          #+#    #+#             */
-/*   Updated: 2023/05/03 20:36:18 by vmustone         ###   ########.fr       */
+/*   Updated: 2023/05/11 21:17:31 by vmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	reverse_rotate(t_stack *stack)
 
 	i = 0;
 	tmp = stack->ptr[stack->size - 1];
-	while (i < stack->size)
+	while (i < stack->size - 1)
 	{
 		stack->ptr[stack->size - 1 - i] = stack->ptr[stack->size - i - 2];
 		i++;

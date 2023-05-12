@@ -6,26 +6,28 @@
 /*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 13:37:43 by vmustone          #+#    #+#             */
-/*   Updated: 2023/05/10 17:33:58 by vmustone         ###   ########.fr       */
+/*   Updated: 2023/05/11 20:52:55 by vmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_stacks(t_stack *stack_a, t_stack *stack_b, char **argv)
+void	free_stacks(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
 {
 	int	i;
 
 	i = 0;
 	free(stack_a->ptr);
 	free(stack_b->ptr);
-	while (argv[i] != NULL)
+	if (argc == 2)
 	{
-		free(argv[i]);
-		i++;
+		while (argv[i] != NULL)
+		{
+			free(argv[i]);
+			i++;
+		}
 	}
 	free(argv);
-	exit (0);
 }
 
 void	errors(char **argv)

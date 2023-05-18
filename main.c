@@ -6,7 +6,7 @@
 /*   By: vmustone <vmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 15:35:59 by vmustone          #+#    #+#             */
-/*   Updated: 2023/05/11 21:30:08 by vmustone         ###   ########.fr       */
+/*   Updated: 2023/05/18 13:11:02 by vmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	init_string(t_stack *stack_a, t_stack *stack_b, char **argv)
 	stack_b->size = 0;
 	stack_b->ptr = ft_calloc(stack_a->size + 1, sizeof(int));
 	if (stack_a->ptr == NULL)
+		errors(NULL);
+	if (stack_b->ptr == NULL)
 		errors(NULL);
 	while (i < stack_a->size)
 	{
@@ -41,6 +43,8 @@ void	init_stack(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
 	stack_b->size = 0;
 	stack_b->ptr = ft_calloc(stack_a->size + 1, sizeof(int));
 	if (stack_a->ptr == NULL)
+		errors(NULL);
+	if (stack_b->ptr == NULL)
 		errors(NULL);
 	while (i < stack_a->size)
 	{
